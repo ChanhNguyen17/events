@@ -47,20 +47,6 @@ const routes = function (Event) {
                 }
             });
         })
-        .patch(function (req, res) {
-            if (req.body._id)
-                delete req.body._id;
-            for (const p in req.body) {
-                req.event[p] = req.body[p];
-            }
-            req.event.save(function (err) {
-                if (err)
-                    res.status(500).send(err);
-                else {
-                    res.json(req.event);
-                }
-            });
-        })
         .delete(function (req, res) {
             req.event.remove(function (err) {
                 if (err)
